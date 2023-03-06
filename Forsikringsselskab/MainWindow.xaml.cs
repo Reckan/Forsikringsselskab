@@ -325,5 +325,26 @@ namespace Forsikringsselskab
         {
 
         }
+
+        private void BtnGemF_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnRedigerF_Click(object sender, RoutedEventArgs e)
+        {
+            Func.ValgtForsikringAftaleIRediger = DgForsikringsList.SelectedItem as ForsikringAftaler;
+            // Vælg Cbx stuff here
+
+            TbxRegNr.Text = Func.ValgtForsikringAftaleIRediger?.Registreringsnummer;
+            TbxPris.Text = Func.ValgtForsikringAftaleIRediger?.Pris.ToString();
+            TbxForsikringssumAuto.Text = Func.ValgtForsikringAftaleIRediger?.Forsikringssum.ToString();
+            TbxBetingelser.Text = Func.ValgtForsikringAftaleIRediger?.Betingelser;
+        }
+
+        private void BtnSletF_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

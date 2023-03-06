@@ -28,11 +28,11 @@
             </TabItem>
             <TabItem Header="Forsikring">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid HorizontalAlignment="Left" Height="247" Margin="335,10,0,0" VerticalAlignment="Top" Width="459" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                    <TextBox x:Name="TbxRegNr" HorizontalAlignment="Left" Margin="102,65,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="158"/>
-                    <TextBox x:Name="TbxPris" HorizontalAlignment="Left" Margin="102,88,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="158"/>
-                    <TextBox x:Name="TbxForsikringssumAuto" HorizontalAlignment="Left" Margin="102,111,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="158"/>
-                    <TextBox x:Name="TbxBenærkninger" HorizontalAlignment="Left" Margin="102,134,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="158" Height="116"/>
+                    <DataGrid x:Name="DgForsikringsList" HorizontalAlignment="Left" Height="247" Margin="335,10,0,0" VerticalAlignment="Top" Width="459" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                    <TextBox x:Name="TbxRegNr" HorizontalAlignment="Left" Margin="102,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158"/>
+                    <TextBox x:Name="TbxPris" HorizontalAlignment="Left" Margin="102,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158"/>
+                    <TextBox x:Name="TbxForsikringssumAuto" HorizontalAlignment="Left" Margin="102,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158"/>
+                    <TextBox x:Name="TbxBetingelser" HorizontalAlignment="Left" Margin="102,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" Height="116"/>
                     <ComboBox x:Name="CbxBilmodelList" HorizontalAlignment="Left" Margin="102,38,0,0" VerticalAlignment="Top" Width="158" ItemsSource="{Binding BilmodelList}" SelectionChanged="CbxBilmodelList_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -58,6 +58,15 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+                    <Label x:Name="KunderLabelCbx" Content="Kunder:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="BilmodelLabelCbx" Content="Bilmodel:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="RegNrLabel" Content="Reg. nr." HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="PrisLabel" Content="Pris:" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ForsikringssumLabelAuto" Content="Forsikringssum:" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="BetingelserLabel" Content="Betingelser:" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="BtnGemF" Content="Gem" HorizontalAlignment="Left" Margin="330,262,0,0" VerticalAlignment="Top" Width="45" Click="BtnGemF_Click"/>
+                    <Button x:Name="BtnRedigerF" Content="Rediger" HorizontalAlignment="Left" Margin="380,262,0,0" VerticalAlignment="Top" Click="BtnRedigerF_Click"/>
+                    <Button x:Name="BtnSletF" Content="Slet" HorizontalAlignment="Left" Margin="739,267,0,0" VerticalAlignment="Top" Width="45" Click="BtnSletF_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Bilmodeller">

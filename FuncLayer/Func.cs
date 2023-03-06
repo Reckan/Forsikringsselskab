@@ -22,6 +22,45 @@ namespace FuncLayer
                 return Data.BilmodelList;
             }
         }
+        public ObservableCollection<ForsikringAftaler> ForsikringList
+        {
+            get
+            {
+                return Data.ForsikringList;
+            }
+        }
+        private ForsikringAftaler _ValgtForsikringAftale;
+        public ForsikringAftaler ValgtForsikringAftale
+        {
+            get
+            {
+                return _ValgtForsikringAftale;
+            }
+            set
+            {
+                _ValgtForsikringAftale = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(ForsikringList)));
+                }
+            }
+        }
+        private ForsikringAftaler _ValgtForsikringAftaleIRediger;
+        public ForsikringAftaler ValgtForsikringAftaleIRediger
+        {
+            get
+            {
+                return _ValgtForsikringAftaleIRediger;
+            }
+            set
+            {
+                _ValgtForsikringAftaleIRediger = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(ValgtForsikringAftaleIRediger)));
+                }
+            }
+        }
         private Kunde _ValgtKunde;
         public Kunde ValgtKunde
         {
@@ -64,7 +103,7 @@ namespace FuncLayer
             set
             {
                 _ValgtBilmodel = value;
-                if(PropertyChanged != null)
+                if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs(nameof(ValgtBilmodel)));
                 }

@@ -23,6 +23,13 @@ namespace DataLayer
                 return converter.GetBilmodelList(sqlAccess.ExecuteSql("select * from Bilmodel"));
             }
         }
+        public ObservableCollection<ForsikringAftaler> ForsikringList
+        {
+            get
+            {
+                return converter.GetForsikringList(sqlAccess.ExecuteSql(""));
+            }
+        }
         public Data()
         {
             sqlAccess = new SqlAccess();
