@@ -1,4 +1,5 @@
-﻿using FuncLayer;
+﻿using DataClasses;
+using FuncLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,20 +28,138 @@ namespace Forsikringsselskab
             InitializeComponent();
             DataContext = Func;
         }
+        private void NyValgtKunde(Kunde kunde)
+        {
+            if (kunde != null)
+            {
+                Func.ValgtKunde = kunde;
+            }
+            else
+            {
+                Func.ValgtKunde = null;
+            }
+        }
 
         private void BtnGem_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Kunde kunde = GetKundeUiInfo();
+                if (Func.ValgtKundeIRediger == null)
+                {
+                    OpretNyKunde(kunde);
+                }
+                else
+                {
+                    GemEksisterendeKunde(Func.ValgtKundeIRediger, kunde);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Fejl ved opret af kunde");
+            }
+        }
 
+        private void GemEksisterendeKunde(Kunde kunde, Kunde kundeInfo)
+        {
+            Func.RedigerKunde(kunde, kundeInfo);
+        }
+
+        private void OpretNyKunde(Kunde kunde)
+        {
+            try
+            {
+                Func.NyKunde(kunde);
+                TbxFornavn.Text = "";
+                TbxEfternavn.Text = "";
+                TbxAdresse.Text = "";
+                TbxPostNummer.Text = "";
+                TbxTelefon.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private Kunde GetKundeUiInfo()
+        {
+            string fornavn;
+            string efternavn;
+            string adresse;
+            int postnummer;
+            int telefonNummer;
+            try
+            {
+                if (TbxFornavn.Text == "")
+                {
+                    throw new ArgumentException(FornavnLabel.Content.ToString());
+                }
+                if (TbxEfternavn.Text == "")
+                {
+                    throw new ArgumentException(EfternavnLabel.Content.ToString());
+                }
+                if (TbxAdresse.Text == "")
+                {
+                    throw new ArgumentException(AdresseLabel.Content.ToString());
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw new Exception($"Feltet \"{ex.ParamName}\" skal indholde tal");
+            }
+            catch (ArgumentException ex)
+            {
+                throw new Exception($"Feltet \"{ex.Message}\" skal udfyldes");
+            }
+            try
+            {
+                postnummer = int.Parse(TbxPostNummer.Text);
+            }
+            catch (FormatException)
+            {
+                throw new Exception($"Skriv tal if feltet \"{PostnummerLabel.Content.ToString()}\"");
+            }
+            try
+            {
+                telefonNummer = int.Parse(TbxTelefon.Text);
+            }
+            catch (FormatException)
+            {
+                throw new Exception($"Skriv tal if feltet \"{TelefonLabel.Content.ToString()}\"");
+            }
+            fornavn = TbxFornavn.Text;
+            efternavn = TbxEfternavn.Text;
+            adresse = TbxAdresse.Text;
+            Kunde kunde = new(fornavn, efternavn, adresse, postnummer, telefonNummer);
+            return kunde;
         }
 
         private void BtnRediger_Click(object sender, RoutedEventArgs e)
         {
+            Func.ValgtKundeIRediger = DgKundeList.SelectedItem as Kunde;
 
+            TbxFornavn.Text = (Func.ValgtKundeIRediger != null) ? Func.ValgtKundeIRediger.Fornavn : "";
+            TbxEfternavn.Text = Func.ValgtKundeIRediger?.Efternavn;
+            TbxAdresse.Text = Func.ValgtKundeIRediger?.Adresse;
+            TbxPostNummer.Text = Func.ValgtKundeIRediger?.Postnummer.ToString();
+            TbxTelefon.Text = Func.ValgtKundeIRediger?.TelefonNummer.ToString();
         }
 
         private void BtnSlet_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (DgKundeList.SelectedItem == null)
+                {
+                    throw (new ArgumentNullException("Kan ikke fjerne ikke valgt element"));
+                }
+                Func.SletKunde(DgKundeList.SelectedItem as Kunde);
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show(ex.ParamName, "Fejl ved fjern");
+            }
         }
     }
 }

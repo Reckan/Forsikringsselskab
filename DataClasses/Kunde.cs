@@ -2,7 +2,7 @@
 {
     public class Kunde
     {
-        public Kunde(string fornavn, string efternavn, string adresse, int postnummer, int telefonNummer, int id)
+        public Kunde(string fornavn, string efternavn, string adresse, int postnummer, int telefonNummer, int id = -1)
         {
             Fornavn = fornavn;
             Efternavn = efternavn;

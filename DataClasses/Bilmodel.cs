@@ -8,11 +8,14 @@ namespace DataClasses
 {
     public class Bilmodel
     {
-        public Bilmodel(string mærke, string model, int startår, int id)
+        public Bilmodel(string mærke, string model, int startår, int slutår, int standardpris, int forsikringssum, int id = -1)
         {
             Mærke = mærke;
             Model = model;
             Startår = startår;
+            Slutår = slutår;
+            Standardpris = standardpris;
+            Forsikringssum = forsikringssum;
             Id = id;
         }
         public string Mærke { get; set; }
@@ -20,6 +23,7 @@ namespace DataClasses
         public int Startår { get; set; }
         public int Slutår { get; set; }
         public int Standardpris { get; set; }
+        public int Forsikringssum { get; set; }
         public int Id { get; }
     }
 }
