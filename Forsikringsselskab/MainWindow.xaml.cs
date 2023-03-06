@@ -316,5 +316,14 @@ namespace Forsikringsselskab
             }
         }
 
+        private void CbxKundeListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CbxBilmodelList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -33,7 +33,7 @@
                     <TextBox x:Name="TbxPris" HorizontalAlignment="Left" Margin="102,88,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="158"/>
                     <TextBox x:Name="TbxForsikringssumAuto" HorizontalAlignment="Left" Margin="102,111,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="158"/>
                     <TextBox x:Name="TbxBenærkninger" HorizontalAlignment="Left" Margin="102,134,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="158" Height="116"/>
-                    <ComboBox x:Name="CbxBilmodelList" HorizontalAlignment="Left" Margin="102,38,0,0" VerticalAlignment="Top" Width="158" ItemsSource="{Binding BilmodelList}">
+                    <ComboBox x:Name="CbxBilmodelList" HorizontalAlignment="Left" Margin="102,38,0,0" VerticalAlignment="Top" Width="158" ItemsSource="{Binding BilmodelList}" SelectionChanged="CbxBilmodelList_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock>
@@ -48,7 +48,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <ComboBox x:Name="CbxKundeListe" HorizontalAlignment="Left" Margin="102,10,0,0" VerticalAlignment="Top" Width="158" ItemsSource="{Binding KundeList}">
+                    <ComboBox x:Name="CbxKundeListe" HorizontalAlignment="Left" Margin="102,10,0,0" VerticalAlignment="Top" Width="158" ItemsSource="{Binding KundeList}" SelectionChanged="CbxKundeListe_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock>
