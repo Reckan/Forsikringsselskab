@@ -147,7 +147,13 @@ namespace Forsikringsselskab
         }
         private Bilmodel GetBilUiIfo()
         {
-            Bilmodel bilmodel = new();
+            string mærke;
+            string model;
+            int startår;
+            int slutår;
+            int standartpris;
+            int forsikringssum;
+            Bilmodel bilmodel = new(mærke, model, startår, slutår,standartpris, forsikringssum);
             return bilmodel;
         }
         private void OpretNyBilmodel(Bilmodel bilmodel)
@@ -234,7 +240,18 @@ namespace Forsikringsselskab
 
         private void BtnSletBil_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if(DgBilmodelList.SelectedItem == null)
+                {
+                    throw (new ArgumentNullException("Kan ikke fjerne ikke valgt element"));
+                }
+                Func.SletBilmodel(DgBilmodelList.SelectedItem as Bilmodel);
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show(ex.ParamName, "Fejl ved fjern");
+            }
         }
 
     }
