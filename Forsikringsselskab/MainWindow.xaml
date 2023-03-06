@@ -1,0 +1,26 @@
+﻿<Window x:Class="Forsikringsselskab.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Forsikringsselskab"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="GgKundeList" HorizontalAlignment="Left" Height="253" Margin="339,0,0,0" VerticalAlignment="Center" Width="451" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <TextBox x:Name="TbxFornavn" HorizontalAlignment="Left" Margin="185,91,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TbxEfternavn" HorizontalAlignment="Left" Margin="185,114,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TbxAdresse" HorizontalAlignment="Left" Margin="185,137,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TbxPostNummer" HorizontalAlignment="Left" Margin="185,160,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TbxTelefon" HorizontalAlignment="Left" Margin="185,183,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="FornavnLabel" Content="Fornavn:" HorizontalAlignment="Left" Margin="108,86,0,0" VerticalAlignment="Top" Height="27" Width="57"/>
+        <Label x:Name="EfternavnLabel" Content="Efternavn:" HorizontalAlignment="Left" Margin="103,106,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="AdresseLabel" Content="Adresse:" HorizontalAlignment="Left" Margin="103,130,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="PostnummerLabel" Content="Postnummer:" HorizontalAlignment="Left" Margin="103,156,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TelefonLabel" Content="Telefon:" HorizontalAlignment="Left" Margin="109,182,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BtnGem" Content="Gem" HorizontalAlignment="Left" Margin="283,299,0,0" VerticalAlignment="Top" Width="45" Click="BtnGem_Click"/>
+        <Button x:Name="BtnRediger" Content="Rediger" HorizontalAlignment="Left" Margin="283,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.358,-1.279" Click="BtnRediger_Click"/>
+        <Button x:Name="BtnSlet" Content="Slet" HorizontalAlignment="Left" Margin="745,349,0,0" VerticalAlignment="Top" Width="45" Click="BtnSlet_Click"/>
+
+    </Grid>
+</Window>
