@@ -1,5 +1,6 @@
 ﻿using DataClasses;
 using System.Collections.ObjectModel;
+using System.Text;
 
 namespace DataLayer
 {
@@ -15,6 +16,13 @@ namespace DataLayer
             }
         }
 
+        public ObservableCollection<Bilmodel> BilmodelList
+        {
+            get
+            {
+                return converter.GetBilmodelList(sqlAccess.ExecuteSql("select * from Bilmodel"));
+            }
+        }
         public Data()
         {
             sqlAccess = new SqlAccess();
@@ -31,6 +39,18 @@ namespace DataLayer
         public void DeleteKunde( Kunde kunde)
         {
             sqlAccess.ExecuteSql($"delete from [dbo].[Kunder] where Id = {kunde.Id}");
+        }
+        public void NyBilmodel(Bilmodel bilmodelInfo)
+        {
+            sqlAccess.ExecuteSql($"insert into [dbo].[Bilmodel] ([Mærke], [Model], [Startår], [Slutår], [Standardpris], [Forsikringssum]) values('{bilmodelInfo.Mærke}', '{bilmodelInfo.Model}', {bilmodelInfo.Startår.ToString()}, {bilmodelInfo.Slutår.ToString()}, {bilmodelInfo.Standardpris.ToString()}, {bilmodelInfo.Forsikringssum.ToString()} where Id = {bilmodelInfo.Id})");
+        }
+        public void UpdateBilmodel(Bilmodel bilmodel, Bilmodel bilmodelInfo)
+        {
+            sqlAccess.ExecuteSql($"update [dbo].[Bilmodel] set Mærke = '{bilmodelInfo.Mærke}', Model = '{bilmodelInfo.Model}', Startår = {bilmodelInfo.Startår.ToString()}, Slutår = {bilmodelInfo.Slutår.ToString()}, Standardpris = {bilmodelInfo.Standardpris.ToString()}, Forsikringssum = {bilmodelInfo.Forsikringssum.ToString()} where Id = {bilmodel.Id}");
+        }
+        public void DeleteBilmodel(Bilmodel bilmodel)
+        {
+            sqlAccess.ExecuteSql($"delete from [dbo].[Bilmodel] where Id = {bilmodel.Id}");
         }
     }
 }

@@ -26,10 +26,25 @@ namespace DataLayer
             }
             return list;
         }
+        public ObservableCollection<Bilmodel> GetBilmodelList(DataTable table)
+        {
+            ObservableCollection<Bilmodel> list = new ObservableCollection<Bilmodel>();
+            foreach (DataRow row in table.Rows)
+            {
+                Bilmodel bilmodel = GetBilmodel(row);
+                list.Add(bilmodel);
+            }
+            return list;
+        }
         private Kunde GetKunde(DataRow row)
         {
             Kunde kunde = new((string)row["Fornavn"], (string)row["Efternavn"], (string)row["Adresse"], (int)row["Postnummer"], (int)row["TelefonNummer"], (int)row["Id"]);
             return kunde;
+        }
+        private Bilmodel GetBilmodel(DataRow row)
+        {
+            Bilmodel bilmodel = new((string)row["Mærke"], (string)row["Model"], (int)row["Startår"], (int)row["Slutår"], (int)row["Standardpris"], (int)row["Forsikringssum"], (int)row["Id"]);
+            return bilmodel;
         }
     }
 }

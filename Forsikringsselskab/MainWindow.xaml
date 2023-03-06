@@ -7,20 +7,52 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="DgKundeList" HorizontalAlignment="Left" Height="253" Margin="339,0,0,0" VerticalAlignment="Center" Width="451" ItemsSource="{Binding KundeList}"/>
-        <TextBox x:Name="TbxFornavn" HorizontalAlignment="Left" Margin="185,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TbxEfternavn" HorizontalAlignment="Left" Margin="185,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TbxAdresse" HorizontalAlignment="Left" Margin="185,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TbxPostNummer" HorizontalAlignment="Left" Margin="185,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TbxTelefon" HorizontalAlignment="Left" Margin="185,183,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="FornavnLabel" Content="Fornavn:" HorizontalAlignment="Left" Margin="108,86,0,0" VerticalAlignment="Top" Height="27" Width="57"/>
-        <Label x:Name="EfternavnLabel" Content="Efternavn:" HorizontalAlignment="Left" Margin="103,106,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="AdresseLabel" Content="Adresse:" HorizontalAlignment="Left" Margin="103,130,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="PostnummerLabel" Content="Postnummer:" HorizontalAlignment="Left" Margin="103,156,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="TelefonLabel" Content="Telefon:" HorizontalAlignment="Left" Margin="109,182,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="BtnGem" Content="Gem" HorizontalAlignment="Left" Margin="283,299,0,0" VerticalAlignment="Top" Width="45" Click="BtnGem_Click"/>
-        <Button x:Name="BtnRediger" Content="Rediger" HorizontalAlignment="Left" Margin="283,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.358,-1.279" Click="BtnRediger_Click"/>
-        <Button x:Name="BtnSlet" Content="Slet" HorizontalAlignment="Left" Margin="745,349,0,0" VerticalAlignment="Top" Width="45" Click="BtnSlet_Click"/>
+        <TabControl>
+            <TabItem Header="Kunder">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="DgKundeList" HorizontalAlignment="Left" Height="253" Margin="339,0,0,0" VerticalAlignment="Center" Width="451" ItemsSource="{Binding KundeList}"/>
+                    <TextBox x:Name="TbxFornavn" HorizontalAlignment="Left" Margin="185,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TbxEfternavn" HorizontalAlignment="Left" Margin="185,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TbxAdresse" HorizontalAlignment="Left" Margin="185,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TbxPostNummer" HorizontalAlignment="Left" Margin="185,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TbxTelefon" HorizontalAlignment="Left" Margin="185,183,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="FornavnLabel" Content="Fornavn:" HorizontalAlignment="Left" Margin="108,86,0,0" VerticalAlignment="Top" Height="27" Width="57"/>
+                    <Label x:Name="EfternavnLabel" Content="Efternavn:" HorizontalAlignment="Left" Margin="103,106,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="AdresseLabel" Content="Adresse:" HorizontalAlignment="Left" Margin="103,130,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="PostnummerLabel" Content="Postnummer:" HorizontalAlignment="Left" Margin="103,156,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="TelefonLabel" Content="Telefon:" HorizontalAlignment="Left" Margin="109,182,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="BtnGem" Content="Gem" HorizontalAlignment="Left" Margin="283,299,0,0" VerticalAlignment="Top" Width="45" Click="BtnGem_Click"/>
+                    <Button x:Name="BtnRediger" Content="Rediger" HorizontalAlignment="Left" Margin="283,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.358,-1.279" Click="BtnRediger_Click"/>
+                    <Button x:Name="BtnSlet" Content="Slet" HorizontalAlignment="Left" Margin="745,349,0,0" VerticalAlignment="Top" Width="45" Click="BtnSlet_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Forsikring">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Bilmodeller">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="769*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="DgBilmodelList" HorizontalAlignment="Left" Height="253" Margin="314,0,0,0" VerticalAlignment="Center" Width="451" ItemsSource="{Binding KundeList}" Grid.Column="1"/>
+                    <TextBox x:Name="TbxMærke" HorizontalAlignment="Left" Margin="160,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <TextBox x:Name="TbxModel" HorizontalAlignment="Left" Margin="160,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <TextBox x:Name="TbxStartår" HorizontalAlignment="Left" Margin="160,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <TextBox x:Name="TbxSlutår" HorizontalAlignment="Left" Margin="160,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <TextBox x:Name="TbxStandartpris" HorizontalAlignment="Left" Margin="160,183,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label x:Name="MærkeLabel" Content="Mærke:" HorizontalAlignment="Left" Margin="83,86,0,0" VerticalAlignment="Top" Height="27" Width="57" Grid.Column="1"/>
+                    <Label x:Name="ModelLabel" Content="Model:" HorizontalAlignment="Left" Margin="78,106,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="StartårLabel" Content="Startår:" HorizontalAlignment="Left" Margin="78,130,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="SlutårLabel" Content="Slutår:" HorizontalAlignment="Left" Margin="78,156,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="StandartprisLabel" Content="Standartpris:" HorizontalAlignment="Left" Margin="84,182,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="BtnGemBil" Content="Gem" HorizontalAlignment="Left" Margin="258,299,0,0" VerticalAlignment="Top" Width="45" Grid.Column="1" Click="BtnGemBil_Click"/>
+                    <Button x:Name="BtnRedigerBil" Content="Rediger" HorizontalAlignment="Left" Margin="258,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.358,-1.279" Click="BtnRedigerBil_Click" Grid.Column="1"/>
+                    <Button x:Name="BtnSletBil" Content="Slet" HorizontalAlignment="Left" Margin="720,349,0,0" VerticalAlignment="Top" Width="45" Click="BtnSletBil_Click" Grid.Column="1"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

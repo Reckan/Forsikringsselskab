@@ -161,5 +161,20 @@ namespace Forsikringsselskab
                 MessageBox.Show(ex.ParamName, "Fejl ved fjern");
             }
         }
+
+        private void BtnGemBil_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnRedigerBil_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSletBil_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
