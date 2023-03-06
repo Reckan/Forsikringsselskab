@@ -15,6 +15,13 @@ namespace FuncLayer
                 return Data.KundeList;
             }
         }
+        public ObservableCollection<Bilmodel> BilmodelList
+        {
+            get
+            {
+                return Data.BilmodelList;
+            }
+        }
         private Kunde _ValgtKunde;
         public Kunde ValgtKunde
         {
@@ -44,6 +51,38 @@ namespace FuncLayer
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs(nameof(ValgtKundeIRediger)));
+                }
+            }
+        }
+        private Bilmodel _ValgtBilmodel;
+        public Bilmodel ValgtBilmodel
+        {
+            get
+            {
+                return _ValgtBilmodel;
+            }
+            set
+            {
+                _ValgtBilmodel = value;
+                if(PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(ValgtBilmodel)));
+                }
+            }
+        }
+        private Bilmodel _ValgtBilmodelIRediger;
+        public Bilmodel ValgtBilmodelIRediger
+        {
+            get
+            {
+                return _ValgtBilmodelIRediger;
+            }
+            set
+            {
+                _ValgtBilmodelIRediger = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(ValgtBilmodelIRediger)));
                 }
             }
         }
@@ -97,6 +136,21 @@ namespace FuncLayer
         {
             Data.DeleteKunde(kunde);
             RaisePropertyChanged(nameof(KundeList));
+        }
+        public void NyBilmodel(Bilmodel bilmodelInfo)
+        {
+            Data.NyBilmodel(bilmodelInfo);
+            RaisePropertyChanged(nameof(BilmodelList));
+        }
+        public void RedigerBilmodelInfo(Bilmodel bilmodel, Bilmodel bilmodelInfo)
+        {
+            Data.UpdateBilmodel(bilmodel, bilmodelInfo);
+            RaisePropertyChanged(nameof(BilmodelList));
+        }
+        public void SletBilmodel(Bilmodel bilmodel)
+        {
+            Data.DeleteBilmodel(bilmodel);
+            RaisePropertyChanged(nameof(BilmodelList));
         }
     }
 }

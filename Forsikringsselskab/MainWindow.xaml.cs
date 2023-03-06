@@ -39,6 +39,17 @@ namespace Forsikringsselskab
                 Func.ValgtKunde = null;
             }
         }
+        private void NyValgtBilmodel(Bilmodel bilmodel)
+        {
+            if (bilmodel != null)
+            {
+                Func.ValgtBilmodel = bilmodel;
+            }
+            else
+            {
+                Func.ValgtBilmodel = null;
+            }
+        }
 
         private void BtnGem_Click(object sender, RoutedEventArgs e)
         {
@@ -134,6 +145,32 @@ namespace Forsikringsselskab
             Kunde kunde = new(fornavn, efternavn, adresse, postnummer, telefonNummer);
             return kunde;
         }
+        private Bilmodel GetBilUiIfo()
+        {
+            Bilmodel bilmodel = new();
+            return bilmodel;
+        }
+        private void OpretNyBilmodel(Bilmodel bilmodel)
+        {
+            try
+            {
+                Func.NyBilmodel(bilmodel);
+                TbxModel.Text = "";
+                TbxMærke.Text = "";
+                TbxStartår.Text = "";
+                TbxSlutår.Text = "";
+                TbxStandartpris.Text = "";
+                TbxForsikringssum.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void GemEksisterendeBilmodel(Bilmodel bilmodel, Bilmodel bilmodelInfo)
+        {
+            Func.RedigerBilmodelInfo(bilmodel, bilmodelInfo);
+        }
 
         private void BtnRediger_Click(object sender, RoutedEventArgs e)
         {
@@ -164,17 +201,41 @@ namespace Forsikringsselskab
 
         private void BtnGemBil_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                Bilmodel bilmodel = GetBilUiIfo();
+                if (Func.ValgtBilmodelIRediger == null)
+                {
+                    OpretNyBilmodel(bilmodel);
+                }
+                else
+                {
+                    GemEksisterendeBilmodel(Func.ValgtBilmodelIRediger, bilmodel);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Fejl ved opret af kunde");
+            }
         }
 
         private void BtnRedigerBil_Click(object sender, RoutedEventArgs e)
         {
 
+            Func.ValgtBilmodelIRediger = DgBilmodelList.SelectedItem as Bilmodel;
+
+            TbxMærke.Text = (Func.ValgtBilmodelIRediger != null) ? Func.ValgtBilmodelIRediger.Mærke : "";
+            TbxModel.Text = Func.ValgtBilmodelIRediger?.Model;
+            TbxStartår.Text = Func.ValgtBilmodelIRediger?.Startår.ToString();
+            TbxSlutår.Text = Func.ValgtBilmodelIRediger?.Slutår.ToString();
+            TbxStandartpris.Text = Func.ValgtBilmodelIRediger?.Standardpris.ToString();
+            TbxForsikringssum.Text = Func.ValgtBilmodelIRediger?.Forsikringssum.ToString();
         }
 
         private void BtnSletBil_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
     }
 }
