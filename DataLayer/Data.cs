@@ -42,7 +42,7 @@ namespace DataLayer
         }
         public void NyBilmodel(Bilmodel bilmodelInfo)
         {
-            sqlAccess.ExecuteSql($"insert into [dbo].[Bilmodel] ([Mærke], [Model], [Startår], [Slutår], [Standardpris], [Forsikringssum]) values('{bilmodelInfo.Mærke}', '{bilmodelInfo.Model}', {bilmodelInfo.Startår.ToString()}, {bilmodelInfo.Slutår.ToString()}, {bilmodelInfo.Standardpris.ToString()}, {bilmodelInfo.Forsikringssum.ToString()} where Id = {bilmodelInfo.Id})");
+            sqlAccess.ExecuteSql($"insert into [dbo].[Bilmodel] ([Mærke], [Model], [Startår], [Slutår], [Standardpris], [Forsikringssum]) values('{bilmodelInfo.Mærke}', '{bilmodelInfo.Model}', {bilmodelInfo.Startår.ToString()}, {bilmodelInfo.Slutår.ToString()}, {bilmodelInfo.Standardpris.ToString()}, {bilmodelInfo.Forsikringssum.ToString()})");
         }
         public void UpdateBilmodel(Bilmodel bilmodel, Bilmodel bilmodelInfo)
         {

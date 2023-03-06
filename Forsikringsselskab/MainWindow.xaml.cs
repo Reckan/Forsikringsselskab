@@ -153,7 +153,69 @@ namespace Forsikringsselskab
             int slutår;
             int standartpris;
             int forsikringssum;
-            Bilmodel bilmodel = new(mærke, model, startår, slutår,standartpris, forsikringssum);
+            try
+            {
+                if (TbxMærke.Text == "")
+                {
+                    throw new ArgumentException(MærkeLabel.Content.ToString());
+                }
+                if (TbxModel.Text == "")
+                {
+                    throw new ArgumentException(ModelLabel.Content.ToString());
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw new Exception($"Feltet \"{ex.ParamName}\" skal indholde tal");
+            }
+            catch (ArgumentException ex)
+            {
+                throw new Exception($"Feltet \"{ex.Message}\" skal udfyldes");
+            }
+
+
+            try
+            {
+                startår = int.Parse(TbxStartår.Text);
+            }
+            catch (FormatException)
+            {
+                throw new Exception($"Skriv tal if feltet \"{StartårLabel.Content.ToString()}\"");
+            }
+
+
+            try
+            {
+                slutår = int.Parse(TbxSlutår.Text);
+            }
+            catch (FormatException)
+            {
+                throw new Exception($"Skriv tal if feltet \"{SlutårLabel.Content.ToString()}\"");
+            }
+
+
+            try
+            {
+                standartpris = int.Parse(TbxStandartpris.Text);
+            }
+            catch (FormatException)
+            {
+                throw new Exception($"Skriv tal if feltet \"{StandartprisLabel.Content.ToString()}\"");
+            }
+
+
+            try
+            {
+                forsikringssum = int.Parse(TbxForsikringssum.Text);
+            }
+            catch (FormatException)
+            {
+                throw new Exception($"Skriv tal if feltet \"{ForsikringssumLabel.Content.ToString()}\"");
+            }
+
+            mærke = TbxMærke.Text;
+            model = TbxModel.Text;
+            Bilmodel bilmodel = new(mærke, model, startår, slutår, standartpris, forsikringssum);
             return bilmodel;
         }
         private void OpretNyBilmodel(Bilmodel bilmodel)
@@ -242,7 +304,7 @@ namespace Forsikringsselskab
         {
             try
             {
-                if(DgBilmodelList.SelectedItem == null)
+                if (DgBilmodelList.SelectedItem == null)
                 {
                     throw (new ArgumentNullException("Kan ikke fjerne ikke valgt element"));
                 }
