@@ -8,13 +8,15 @@ namespace DataClasses
 {
     public class ForsikringAftaler
     {
-        public ForsikringAftaler(Kunde kunde, Bilmodel bilmodel, string registreringsnummer, string betingelser, int forsikringssum, int id = -1)
+        public ForsikringAftaler(Kunde kunde, Bilmodel bilmodel, string registreringsnummer, string betingelser, int pris, int forsikringssum, DateTime forsikringPeriode, int id = -1)
         {
             Kunde = kunde;
             Bilmodel = bilmodel;
             Registreringsnummer = registreringsnummer;
             Betingelser = betingelser;
-            Forsikringssum = forsikringssum; 
+            Pris = pris;
+            Forsikringssum = forsikringssum;
+            ForsikringPeriode = forsikringPeriode;
             Id = id;
         }
         public Kunde Kunde { get; }
@@ -23,6 +25,7 @@ namespace DataClasses
         public int Pris { get; set; }
         public int Forsikringssum { get; set; }
         public string Betingelser { get; set; }
+        public DateTime ForsikringPeriode { get; private set; }
         public int Id { get; }
     }
 }

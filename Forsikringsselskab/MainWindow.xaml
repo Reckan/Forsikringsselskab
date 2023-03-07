@@ -28,10 +28,20 @@
             </TabItem>
             <TabItem Header="Forsikring">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DgForsikringsList" HorizontalAlignment="Left" Height="247" Margin="335,10,0,0" VerticalAlignment="Top" Width="459" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                    <DataGrid x:Name="DgForsikringsList" HorizontalAlignment="Left" Height="247" Margin="335,10,0,0" VerticalAlignment="Top" Width="459" ItemsSource="{Binding ForsikringList}" IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Kunde" Binding="{Binding Kunde.Fornavn}"/>
+                            <DataGridTextColumn Header="Bilmodel" Binding="{Binding Bilmodel}"/>
+                            <DataGridTextColumn Header="RegNr" Binding="{Binding Registreringsnummer}"/>
+                            <DataGridTextColumn Header="Pris" Binding="{Binding Pris}"/>
+                            <DataGridTextColumn Header="Forsikringssum" Binding="{Binding Forsikringssum}"/>
+                            <DataGridTextColumn Header="Betingelser" Binding="{Binding Betingelser}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <TextBox x:Name="TbxRegNr" HorizontalAlignment="Left" Margin="102,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158"/>
-                    <TextBox x:Name="TbxPris" HorizontalAlignment="Left" Margin="102,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158"/>
-                    <TextBox x:Name="TbxForsikringssumAuto" HorizontalAlignment="Left" Margin="102,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158"/>
+                    <TextBox x:Name="TbxPris" HorizontalAlignment="Left" Margin="102,88,0,0" TextWrapping="Wrap" Text="{Binding ValgtBilmodel.Standardpris}" VerticalAlignment="Top" Width="158"/>
+                    <TextBox x:Name="TbxForsikringssumAuto" HorizontalAlignment="Left" Margin="102,111,0,0" TextWrapping="Wrap" Text="{Binding ValgtBilmodel.Forsikringssum}" VerticalAlignment="Top" Width="158"/>
                     <TextBox x:Name="TbxBetingelser" HorizontalAlignment="Left" Margin="102,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" Height="116"/>
                     <ComboBox x:Name="CbxBilmodelList" HorizontalAlignment="Left" Margin="102,38,0,0" VerticalAlignment="Top" Width="158" ItemsSource="{Binding BilmodelList}" SelectionChanged="CbxBilmodelList_SelectionChanged">
                         <ComboBox.ItemTemplate>
@@ -67,6 +77,7 @@
                     <Button x:Name="BtnGemF" Content="Gem" HorizontalAlignment="Left" Margin="330,262,0,0" VerticalAlignment="Top" Width="45" Click="BtnGemF_Click"/>
                     <Button x:Name="BtnRedigerF" Content="Rediger" HorizontalAlignment="Left" Margin="380,262,0,0" VerticalAlignment="Top" Click="BtnRedigerF_Click"/>
                     <Button x:Name="BtnSletF" Content="Slet" HorizontalAlignment="Left" Margin="739,267,0,0" VerticalAlignment="Top" Width="45" Click="BtnSletF_Click"/>
+                    <DatePicker x:Name="DpDate" HorizontalAlignment="Left" Margin="102,253,0,0" VerticalAlignment="Top" Width="158"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Bilmodeller">

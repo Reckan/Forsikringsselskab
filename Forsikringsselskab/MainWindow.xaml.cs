@@ -48,6 +48,8 @@ namespace Forsikringsselskab
             else
             {
                 Func.ValgtBilmodel = null;
+                TbxPris.Text = "";
+                TbxForsikringssumAuto.Text = "";
             }
         }
 
@@ -318,17 +320,32 @@ namespace Forsikringsselskab
 
         private void CbxKundeListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            NyValgtKunde(CbxKundeListe.SelectedItem as Kunde);
         }
 
         private void CbxBilmodelList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            NyValgtBilmodel(CbxBilmodelList.SelectedItem as Bilmodel);
         }
 
         private void BtnGemF_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                ForsikringAftaler forsikring = GetForsikringUiInfo();
+                if (Func.ValgtForsikringAftaleIRediger == null)
+                {
+                    OpretNyForsikring(forsikring);
+                }
+                else
+                {
+                    GemEksisterendeForsikring(Func.ValgtForsikringAftaleIRediger, forsikring);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Fejl ved opret af forsikring");
+            }
         }
 
         private void BtnRedigerF_Click(object sender, RoutedEventArgs e)
@@ -344,6 +361,96 @@ namespace Forsikringsselskab
 
         private void BtnSletF_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (DgForsikringsList.SelectedItem == null)
+                {
+                    throw (new ArgumentNullException("Kan ikke fjerne ikke valgt element"));
+                }
+                Func.SletForsikring(DgForsikringsList.SelectedItem as ForsikringAftaler);
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show(ex.ParamName, "Fejl ved fjern");
+            }
+        }
+        private void OpretNyForsikring(ForsikringAftaler forsikring)
+        {
+            try
+            {
+                Func.NyForsikring(forsikring);
+                CbxKundeListe.SelectedIndex = -1;
+                CbxBilmodelList.SelectedIndex = -1;
+                TbxRegNr.Text = "";
+                TbxPris.Text = "";
+                TbxForsikringssumAuto.Text = "";
+                TbxBetingelser.Text = "";
+                DpDate.SelectedDate = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void GemEksisterendeForsikring(ForsikringAftaler forsikring, ForsikringAftaler forsikringInfo)
+        {
+            Func.RedigerForsikring(forsikring, forsikringInfo);
+        }
+        private ForsikringAftaler GetForsikringUiInfo()
+        {
+            Kunde kunde;
+            Bilmodel bilmodel;
+            string registreringsnummer;
+            string betingelser;
+            int pris;
+            int forsikringssum;
+            DateTime date;
+            try
+            {
+                if (CbxKundeListe.SelectedItem == null)
+                {
+                    throw (new ArgumentNullException(nameof(CbxKundeListe)));
+                }
+                if (CbxBilmodelList.SelectedItem == null)
+                {
+                    throw (new ArgumentNullException(nameof(CbxBilmodelList)));
+                }
+                if (TbxRegNr.Text == "")
+                {
+                    throw (new ArgumentNullException(nameof(registreringsnummer)));
+                }
+                if (TbxBetingelser.Text == "")
+                {
+                    throw (new ArgumentNullException(nameof(betingelser)));
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            try
+            {
+                pris = int.Parse(TbxPris.Text);
+            }
+            catch (FormatException ex)
+            {
+                throw new Exception($"Skriv tal if feltet \"{PrisLabel.Content.ToString()}\"");
+            }
+            try
+            {
+                forsikringssum = int.Parse(TbxForsikringssumAuto.Text);
+            }
+            catch (FormatException)
+            {
+                throw new Exception($"Skriv tal if feltet \"{ForsikringssumLabelAuto.Content.ToString()}\"");
+            }
+            kunde = CbxKundeListe.SelectedItem as Kunde;
+            bilmodel = CbxBilmodelList.SelectedItem as Bilmodel;
+            registreringsnummer = TbxRegNr.Text;
+            betingelser = TbxBetingelser.Text;
+            date = (DateTime)DpDate.SelectedDate;
+            ForsikringAftaler forsikring = new(kunde, bilmodel, registreringsnummer, betingelser, pris, forsikringssum, date);
+            return forsikring;
 
         }
     }

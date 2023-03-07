@@ -11,7 +11,7 @@ namespace DataLayer
     internal class SqlAccess
     {
         SqlConnection connection = null;
-        string cs = "Data Source=(localdb)\\ProjectModels;Initial Catalog=ForsikringsselskabDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string cs = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ForsikringsselskabDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public SqlAccess()
         {

@@ -41,8 +41,8 @@ namespace DataLayer
             ObservableCollection<ForsikringAftaler> list = new ObservableCollection<ForsikringAftaler>();
             foreach (DataRow row in table.Rows)
             {
-                ForsikringAftaler aftaler = GetAftaler(row);
-                list.Add(aftaler);
+                ForsikringAftaler forsikring = GetAftaler(row);
+                list.Add(forsikring);
             }
             return list;
         }
@@ -58,8 +58,17 @@ namespace DataLayer
         }
         private ForsikringAftaler GetAftaler(DataRow row)
         {
-            ForsikringAftaler aftaler = new();
-            return aftaler;
+            int KundeId = (int)row["KundeId"];
+            int BilmodelId = (int)row["BilmodelId"];
+
+            DataTable KundeTable = sqlAccess.ExecuteSql($"select * from Kunder where Id = {KundeId}");
+            Kunde kunde = GetKunde(KundeTable.Rows[0]);
+            DataTable BilmodelTable = sqlAccess.ExecuteSql($"select * from Bilmodel where Id = {BilmodelId}");
+            Bilmodel bilmodel = GetBilmodel(BilmodelTable.Rows[0]);
+
+
+            ForsikringAftaler forsikring = new(kunde, bilmodel, (string)row["Registreringsnummer"], (string)row["Betingelser"], (int)row["Pris"], (int)row["Forsikringssum"], (DateTime)row["ForsikringPeriode"], (int)row["Id"]);
+            return forsikring;
         }
     }
 }

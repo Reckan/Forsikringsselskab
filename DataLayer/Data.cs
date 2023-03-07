@@ -27,7 +27,7 @@ namespace DataLayer
         {
             get
             {
-                return converter.GetForsikringList(sqlAccess.ExecuteSql(""));
+                return converter.GetForsikringList(sqlAccess.ExecuteSql("select * from ForsikringAftaler"));
             }
         }
         public Data()
@@ -43,7 +43,7 @@ namespace DataLayer
         {
             sqlAccess.ExecuteSql($"update [dbo].[Kunder] set Fornavn = '{kundeInfo.Fornavn}', Efternavn = '{kundeInfo.Efternavn}', Adresse = '{kundeInfo.Adresse}', Postnummer = {kundeInfo.Postnummer.ToString()}, TelefonNummer = {kundeInfo.TelefonNummer.ToString()} where Id = {kunde.Id}");
         }
-        public void DeleteKunde( Kunde kunde)
+        public void DeleteKunde(Kunde kunde)
         {
             sqlAccess.ExecuteSql($"delete from [dbo].[Kunder] where Id = {kunde.Id}");
         }
@@ -58,6 +58,18 @@ namespace DataLayer
         public void DeleteBilmodel(Bilmodel bilmodel)
         {
             sqlAccess.ExecuteSql($"delete from [dbo].[Bilmodel] where Id = {bilmodel.Id}");
+        }
+        public void NyForsikring(ForsikringAftaler forsikringInfo)
+        {
+            sqlAccess.ExecuteSql($"insert into [dbo].[ForsikringAftaler] ([KundeId], [BilmodelId], [Registreringsnummer], [Pris], [Forsikringssum], [Betingelser], [ForsikringPeriode]) values('{forsikringInfo.Kunde.Id}', '{forsikringInfo.Bilmodel.Id}', '{forsikringInfo.Registreringsnummer}', '{forsikringInfo.Pris}', '{forsikringInfo.Forsikringssum}', '{forsikringInfo.Betingelser}', '{forsikringInfo.ForsikringPeriode}')");
+        }
+        public void UpdateForsikring(ForsikringAftaler forsikring, ForsikringAftaler forsikringInfo)
+        {
+            sqlAccess.ExecuteSql($"update [dbo].[ForsikringAftaler] set Registreringsnummer = '{forsikringInfo.Registreringsnummer}', Pris = {forsikringInfo.Pris}, Forsikringssum = {forsikringInfo.Forsikringssum}, Betingelser = {forsikringInfo.Betingelser} where Id = {forsikring.Id}");
+        }
+        public void DeleteForsikring(ForsikringAftaler forsikring)
+        {
+            sqlAccess.ExecuteSql($"delete from [dbo].[ForsikringAftaler] where Id = {forsikring.Id}");
         }
     }
 }

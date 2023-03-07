@@ -159,6 +159,36 @@ namespace FuncLayer
             }
 
         }
+        private void ValidateForsikringInfo(ForsikringAftaler forsikring)
+        {
+            if (forsikring.Kunde == null)
+            {
+                throw new ArgumentException("Skal Vælge en Kunde");
+            }
+            if (forsikring.Bilmodel == null)
+            {
+                throw new ArgumentException("Skal Vælge En Bilmodel");
+            }
+            if (forsikring.Registreringsnummer == null)
+            {
+                throw new ArgumentException("Skale udfylde Registreringsnummet");
+            }
+            if (forsikring.Pris > forsikring.Forsikringssum)
+            {
+                throw new ArgumentException("Pris kan ikke være støre end Forsikringssum");
+            }
+            if (forsikring.Betingelser == null)
+            {
+                throw new ArgumentException("Betingelser skal udfyldes");
+            }
+            foreach (ForsikringAftaler forsikring1 in ForsikringList)
+            {
+                if (forsikring.Registreringsnummer == forsikring1.Registreringsnummer)
+                {
+                    throw new ArgumentException("Dette Registreringsnummer er allerede i brug");
+                }
+            }
+        }
         public event PropertyChangedEventHandler? PropertyChanged;
         public void NyKunde(Kunde kundeInfo)
         {
@@ -190,6 +220,29 @@ namespace FuncLayer
         {
             Data.DeleteBilmodel(bilmodel);
             RaisePropertyChanged(nameof(BilmodelList));
+        }
+        public void NyForsikring(ForsikringAftaler forsikring)
+        {
+            ValidateForsikringInfo(forsikring);
+            if (forsikring.ForsikringPeriode < DateTime.Today)
+            {
+                throw new Exception("Can't Time Travel yet");
+            }
+            else
+            {
+                Data.NyForsikring(forsikring);
+            }
+            RaisePropertyChanged(nameof(ForsikringList));
+        }
+        public void RedigerForsikring(ForsikringAftaler forsikring, ForsikringAftaler forsikringInfo)
+        {
+            Data.UpdateForsikring(forsikring, forsikringInfo);
+            RaisePropertyChanged(nameof(ForsikringList));
+        }
+        public void SletForsikring(ForsikringAftaler forsikring)
+        {
+            Data.DeleteForsikring(forsikring);
+            RaisePropertyChanged(nameof(ForsikringList));
         }
     }
 }
