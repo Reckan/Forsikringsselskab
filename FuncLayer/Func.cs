@@ -181,6 +181,10 @@ namespace FuncLayer
             {
                 throw new ArgumentException("Betingelser skal udfyldes");
             }
+            if (forsikring.ForsikringPeriode == null)
+            {
+                throw new ArgumentNullException("Skal vælge en star dato");
+            }
             foreach (ForsikringAftaler forsikring1 in ForsikringList)
             {
                 if (forsikring.Registreringsnummer == forsikring1.Registreringsnummer)

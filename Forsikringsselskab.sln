@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forsikringsselskab", "Forsikringsselskab\Forsikringsselskab.csproj", "{B8C01BB3-DDD5-4C17-B7E1-3324BCFD06BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forsikringsselskab", "Forsikringsselskab\Forsikringsselskab.csproj", "{B8C01BB3-DDD5-4C17-B7E1-3324BCFD06BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataClasses", "DataClasses\DataClasses.csproj", "{E0461E0A-5461-4854-B2A3-DA403DEB7576}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClasses", "DataClasses\DataClasses.csproj", "{E0461E0A-5461-4854-B2A3-DA403DEB7576}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncLayer", "FuncLayer\FuncLayer.csproj", "{A942BD25-C757-465E-8736-446B0248F4E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuncLayer", "FuncLayer\FuncLayer.csproj", "{A942BD25-C757-465E-8736-446B0248F4E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{29AC990B-6A6D-4424-A546-49784111F9B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{29AC990B-6A6D-4424-A546-49784111F9B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{AAD2757B-B8C5-44BA-81A4-ED165DE64D16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{29AC990B-6A6D-4424-A546-49784111F9B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29AC990B-6A6D-4424-A546-49784111F9B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29AC990B-6A6D-4424-A546-49784111F9B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD2757B-B8C5-44BA-81A4-ED165DE64D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD2757B-B8C5-44BA-81A4-ED165DE64D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD2757B-B8C5-44BA-81A4-ED165DE64D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD2757B-B8C5-44BA-81A4-ED165DE64D16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

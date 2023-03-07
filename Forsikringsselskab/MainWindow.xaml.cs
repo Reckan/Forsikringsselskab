@@ -423,6 +423,10 @@ namespace Forsikringsselskab
                 {
                     throw (new ArgumentNullException(nameof(betingelser)));
                 }
+                if (DpDate.SelectedDate == null)
+                {
+                    throw new ArgumentNullException(nameof(DpDate));
+                }
             }
             catch (ArgumentNullException ex)
             {
