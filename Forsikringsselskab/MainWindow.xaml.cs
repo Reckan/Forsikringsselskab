@@ -361,6 +361,25 @@ namespace Forsikringsselskab
             Func.ValgtForsikringAftaleIRediger = DgForsikringsList.SelectedItem as ForsikringAftaler;
             // Vælg Cbx stuff here
 
+            foreach (object v in CbxKundeListe.Items)
+            {
+                Kunde kunde = v as Kunde;
+                if (kunde.Id == Func.ValgtForsikringAftaleIRediger.Kunde.Id)
+                {
+                    CbxKundeListe.SelectedItem = v;
+                    break;
+                }
+            }
+            foreach(object v in CbxBilmodelList.Items)
+            {
+                Bilmodel bilmodel = v as Bilmodel;
+                if(bilmodel.Id == Func.ValgtForsikringAftaleIRediger.Bilmodel.Id)
+                {
+                    CbxBilmodelList.SelectedItem = v;
+                    break;
+                }
+            }
+
             TbxRegNr.Text = Func.ValgtForsikringAftaleIRediger?.Registreringsnummer;
             TbxPris.Text = Func.ValgtForsikringAftaleIRediger?.Pris.ToString();
             TbxForsikringssumAuto.Text = Func.ValgtForsikringAftaleIRediger?.Forsikringssum.ToString();
