@@ -358,7 +358,7 @@ namespace Forsikringsselskab
 
         private void BtnRedigerF_Click(object sender, RoutedEventArgs e)
         {
-            Func.ValgtForsikringAftaleIRediger = DgForsikringsList.SelectedItem as ForsikringAftaler;
+            Func.ValgtForsikringAftaleIRediger = (ForsikringAftaler)DgForsikringsList.SelectedItem;
 
             foreach (object v in CbxKundeListe.Items)
             {
