@@ -22,6 +22,13 @@ namespace DataClasses
         public string Model { get; set; }
         public int Startår { get; set; }
         public int Slutår { get; set; }
+        public string FuldBil
+        {
+            get
+            {
+                return Mærke + " " + Model + "(" + Startår + "-" + Slutår + ")";
+            }
+        }
         public int Standardpris { get; set; }
         public int Forsikringssum { get; set; }
         public int Id { get; }

@@ -13,6 +13,13 @@
         }
         public string Fornavn { get; set; }
         public string Efternavn { get; set; }
+        public string FuldeNavn
+        {
+            get
+            {
+                return Fornavn + " " + Efternavn;
+            }
+        }
         public string Adresse { get; set; }
         public int Postnummer { get; set; }
         public int TelefonNummer { get; set; }

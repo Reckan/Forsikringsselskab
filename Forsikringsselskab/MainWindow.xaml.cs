@@ -306,7 +306,7 @@ namespace Forsikringsselskab
         {
             try
             {
-                if (DgBilmodelList.SelectedItem == null)
+                if (DgBilmodelList.SelectedItem is null)
                 {
                     throw (new ArgumentNullException("Kan ikke fjerne ikke valgt element"));
                 }
@@ -333,7 +333,7 @@ namespace Forsikringsselskab
             try
             {
                 ForsikringAftaler forsikring = GetForsikringUiInfo();
-                if (Func.ValgtForsikringAftaleIRediger == null)
+                if (Func.ValgtForsikringAftaleIRediger is null)
                 {
                     OpretNyForsikring(forsikring);
                 }
@@ -407,11 +407,11 @@ namespace Forsikringsselskab
             DateTime date;
             try
             {
-                if (CbxKundeListe.SelectedItem == null)
+                if (CbxKundeListe.SelectedItem is null)
                 {
                     throw (new ArgumentNullException(nameof(CbxKundeListe)));
                 }
-                if (CbxBilmodelList.SelectedItem == null)
+                if (CbxBilmodelList.SelectedItem is null)
                 {
                     throw (new ArgumentNullException(nameof(CbxBilmodelList)));
                 }

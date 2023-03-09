@@ -10,7 +10,16 @@
         <TabControl>
             <TabItem Header="Kunder">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DgKundeList" HorizontalAlignment="Left" Height="253" Margin="339,0,0,0" VerticalAlignment="Center" Width="451" ItemsSource="{Binding KundeList}"/>
+                    <DataGrid x:Name="DgKundeList" HorizontalAlignment="Left" Height="253" Margin="339,0,0,0" VerticalAlignment="Center" Width="451" ItemsSource="{Binding KundeList}" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Fornavn" Binding="{Binding Fornavn}"/>
+                            <DataGridTextColumn Header="Efternavn" Binding="{Binding Efternavn}"/>
+                            <DataGridTextColumn Header="Adresse" Binding="{Binding Adresse}"/>
+                            <DataGridTextColumn Header="Postnummer" Binding="{Binding Postnummer}"/>
+                            <DataGridTextColumn Header="Telefon Nummer" Binding="{Binding TelefonNummer}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <TextBox x:Name="TbxFornavn" HorizontalAlignment="Left" Margin="185,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                     <TextBox x:Name="TbxEfternavn" HorizontalAlignment="Left" Margin="185,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                     <TextBox x:Name="TbxAdresse" HorizontalAlignment="Left" Margin="185,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
@@ -31,8 +40,8 @@
                     <DataGrid x:Name="DgForsikringsList" HorizontalAlignment="Left" Height="247" Margin="335,10,0,0" VerticalAlignment="Top" Width="459" ItemsSource="{Binding ForsikringList}" IsReadOnly="True" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                            <DataGridTextColumn Header="Kunde" Binding="{Binding Kunde.Fornavn}"/>
-                            <DataGridTextColumn Header="Bilmodel" Binding="{Binding Bilmodel}"/>
+                            <DataGridTextColumn Header="Kunde" Binding="{Binding Kunde.FuldeNavn}"/>
+                            <DataGridTextColumn Header="Bilmodel" Binding="{Binding Bilmodel.FuldBil}"/>
                             <DataGridTextColumn Header="RegNr" Binding="{Binding Registreringsnummer}"/>
                             <DataGridTextColumn Header="Pris" Binding="{Binding Pris}"/>
                             <DataGridTextColumn Header="Forsikringssum" Binding="{Binding Forsikringssum}"/>
@@ -86,7 +95,17 @@
                         <ColumnDefinition Width="25*"/>
                         <ColumnDefinition Width="769*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="DgBilmodelList" HorizontalAlignment="Left" Height="253" Margin="314,0,0,0" VerticalAlignment="Center" Width="451" ItemsSource="{Binding BilmodelList}" Grid.Column="1"/>
+                    <DataGrid x:Name="DgBilmodelList" HorizontalAlignment="Left" Height="253" Margin="314,0,0,0" VerticalAlignment="Center" Width="451" ItemsSource="{Binding BilmodelList}" Grid.Column="1" IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Mærke" Binding="{Binding Mærke}"/>
+                            <DataGridTextColumn Header="Model" Binding="{Binding Model}"/>
+                            <DataGridTextColumn Header="Startår" Binding="{Binding Startår}"/>
+                            <DataGridTextColumn Header="Slutår" Binding="{Binding Slutår}"/>
+                            <DataGridTextColumn Header="Standartpris" Binding="{Binding Standardpris}"/>
+                            <DataGridTextColumn Header="Forsikringssum" Binding="{Binding Forsikringssum}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <TextBox x:Name="TbxMærke" HorizontalAlignment="Left" Margin="160,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
                     <TextBox x:Name="TbxModel" HorizontalAlignment="Left" Margin="160,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
                     <TextBox x:Name="TbxStartår" HorizontalAlignment="Left" Margin="160,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>

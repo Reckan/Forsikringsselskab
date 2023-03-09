@@ -65,7 +65,7 @@ namespace DataLayer
         }
         public void UpdateForsikring(ForsikringAftaler forsikring, ForsikringAftaler forsikringInfo)
         {
-            sqlAccess.ExecuteSql($"update [dbo].[ForsikringAftaler] set Registreringsnummer = '{forsikringInfo.Registreringsnummer}', Pris = {forsikringInfo.Pris}, Forsikringssum = {forsikringInfo.Forsikringssum}, Betingelser = {forsikringInfo.Betingelser} where Id = {forsikring.Id}");
+            sqlAccess.ExecuteSql($"update [dbo].[ForsikringAftaler] set Registreringsnummer = '{forsikringInfo.Registreringsnummer}', Pris = {forsikringInfo.Pris}, Forsikringssum = {forsikringInfo.Forsikringssum}, Betingelser = '{forsikringInfo.Betingelser}' where Id = {forsikring.Id}");
         }
         public void DeleteForsikring(ForsikringAftaler forsikring)
         {

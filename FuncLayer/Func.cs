@@ -157,7 +157,28 @@ namespace FuncLayer
                     throw new ArgumentException("Telefon Nummeret er allerede i brug");
                 }
             }
-
+        }
+        private void ValidateBilInfo(Bilmodel bilmodel)
+        {
+            if (bilmodel.Model is "")
+            {
+                throw new ArgumentException("Model skal udfyldes");
+            }
+            if (bilmodel.Mærke == "")
+            {
+                throw new ArgumentException("Mærke skal udfuldes");
+            }
+            if (bilmodel.Slutår < bilmodel.Startår)
+            {
+                throw new ArgumentException("Startår kan ikke være støre end Slutår");
+            }
+            foreach(Bilmodel bilmodel1 in BilmodelList)
+            {
+                if(bilmodel.Mærke == bilmodel1.Mærke && bilmodel.Model == bilmodel1.Model && bilmodel.Startår >= bilmodel1.Startår && bilmodel.Slutår <= bilmodel1.Slutår && bilmodel.Startår <= bilmodel1.Slutår)
+                {
+                    throw new ArgumentException("Der en bil af samme Mærke, Model og Årstal findes allerede");
+                }
+            }
         }
         private void ValidateForsikringInfo(ForsikringAftaler forsikring)
         {
@@ -212,6 +233,7 @@ namespace FuncLayer
         }
         public void NyBilmodel(Bilmodel bilmodelInfo)
         {
+            ValidateBilInfo(bilmodelInfo);
             Data.NyBilmodel(bilmodelInfo);
             RaisePropertyChanged(nameof(BilmodelList));
         }
