@@ -10,7 +10,7 @@ namespace DataLayer
 {
     internal class SqlAccess
     {
-        SqlConnection connection = null;
+        SqlConnection connection;
         string cs = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ForsikringsselskabDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public SqlAccess()
@@ -28,7 +28,7 @@ namespace DataLayer
                 connection.Open();
                 connection.Close();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 return false;
             }

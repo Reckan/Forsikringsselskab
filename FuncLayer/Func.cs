@@ -29,7 +29,7 @@ namespace FuncLayer
                 return Data.ForsikringList;
             }
         }
-        private ForsikringAftaler _ValgtForsikringAftale;
+        private ForsikringAftaler? _ValgtForsikringAftale;
         public ForsikringAftaler ValgtForsikringAftale
         {
             get
@@ -45,7 +45,7 @@ namespace FuncLayer
                 }
             }
         }
-        private ForsikringAftaler _ValgtForsikringAftaleIRediger;
+        private ForsikringAftaler? _ValgtForsikringAftaleIRediger;
         public ForsikringAftaler ValgtForsikringAftaleIRediger
         {
             get
@@ -61,7 +61,7 @@ namespace FuncLayer
                 }
             }
         }
-        private Kunde _ValgtKunde;
+        private Kunde? _ValgtKunde;
         public Kunde ValgtKunde
         {
             get
@@ -77,7 +77,7 @@ namespace FuncLayer
                 }
             }
         }
-        private Kunde _ValgtKundeIRediger;
+        private Kunde? _ValgtKundeIRediger;
         public Kunde ValgtKundeIRediger
         {
             get
@@ -93,7 +93,7 @@ namespace FuncLayer
                 }
             }
         }
-        private Bilmodel _ValgtBilmodel;
+        private Bilmodel? _ValgtBilmodel;
         public Bilmodel ValgtBilmodel
         {
             get
@@ -109,7 +109,7 @@ namespace FuncLayer
                 }
             }
         }
-        private Bilmodel _ValgtBilmodelIRediger;
+        private Bilmodel? _ValgtBilmodelIRediger;
         public Bilmodel ValgtBilmodelIRediger
         {
             get
