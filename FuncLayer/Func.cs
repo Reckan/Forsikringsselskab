@@ -218,6 +218,26 @@ namespace FuncLayer
                 }
             }
         }
+        private void CheckIfDeletable(Kunde kunde)
+        {
+            foreach (ForsikringAftaler forsikring in ForsikringList)
+            {
+                if (forsikring.Kunde.Id == kunde.Id)
+                {
+                    throw new Exception("Kan ikke slette en kune men en aktiv forsikring");
+                }
+            }
+        }
+        private void CheckIfDeletableBil(Bilmodel bilmodel)
+        {
+            foreach(ForsikringAftaler forsikring in ForsikringList)
+            {
+                if(forsikring.Bilmodel.Id == bilmodel.Id)
+                {
+                    throw new Exception("Kan ikke slette en bilmodle der er aktiv i brug af kunder");
+                }
+            }
+        }
         public event PropertyChangedEventHandler? PropertyChanged;
         public void NyKunde(Kunde kundeInfo)
         {
@@ -232,6 +252,7 @@ namespace FuncLayer
         }
         public void SletKunde(Kunde kunde)
         {
+            CheckIfDeletable(kunde);
             Data.DeleteKunde(kunde);
             RaisePropertyChanged(nameof(KundeList));
         }
@@ -248,6 +269,7 @@ namespace FuncLayer
         }
         public void SletBilmodel(Bilmodel bilmodel)
         {
+            CheckIfDeletableBil(bilmodel);
             Data.DeleteBilmodel(bilmodel);
             RaisePropertyChanged(nameof(BilmodelList));
         }

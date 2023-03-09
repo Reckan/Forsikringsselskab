@@ -267,6 +267,10 @@ namespace Forsikringsselskab
             {
                 MessageBox.Show(ex.ParamName, "Fejl ved fjern");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fejl ved fjern");
+            }
         }
 
         private void BtnGemBil_Click(object sender, RoutedEventArgs e)
@@ -315,6 +319,10 @@ namespace Forsikringsselskab
             catch (ArgumentNullException ex)
             {
                 MessageBox.Show(ex.ParamName, "Fejl ved fjern");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fejl ved fjern");
             }
         }
 
