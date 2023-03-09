@@ -359,7 +359,6 @@ namespace Forsikringsselskab
         private void BtnRedigerF_Click(object sender, RoutedEventArgs e)
         {
             Func.ValgtForsikringAftaleIRediger = DgForsikringsList.SelectedItem as ForsikringAftaler;
-            // Vælg Cbx stuff here
 
             foreach (object v in CbxKundeListe.Items)
             {
@@ -370,10 +369,10 @@ namespace Forsikringsselskab
                     break;
                 }
             }
-            foreach(object v in CbxBilmodelList.Items)
+            foreach (object v in CbxBilmodelList.Items)
             {
                 Bilmodel bilmodel = v as Bilmodel;
-                if(bilmodel.Id == Func.ValgtForsikringAftaleIRediger.Bilmodel.Id)
+                if (bilmodel.Id == Func.ValgtForsikringAftaleIRediger.Bilmodel.Id)
                 {
                     CbxBilmodelList.SelectedItem = v;
                     break;
