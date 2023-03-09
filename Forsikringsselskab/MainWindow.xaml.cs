@@ -407,11 +407,11 @@ namespace Forsikringsselskab
             DateTime date;
             try
             {
-                if (CbxKundeListe.SelectedItem is null)
+                if (CbxKundeListe.SelectedItem == null)
                 {
                     throw (new ArgumentNullException(nameof(CbxKundeListe)));
                 }
-                if (CbxBilmodelList.SelectedItem is null)
+                if (CbxBilmodelList.SelectedItem == null)
                 {
                     throw (new ArgumentNullException(nameof(CbxBilmodelList)));
                 }

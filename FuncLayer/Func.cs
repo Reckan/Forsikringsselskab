@@ -146,9 +146,13 @@ namespace FuncLayer
             {
                 throw new ArgumentException("Adresse skal udfyldes");
             }
-            if (kunde.Postnummer.ToString().Length < 4 || kunde.Postnummer.ToString().Length > 4)
+            if (kunde.Postnummer.ToString().Length != 4)
             {
                 throw new ArgumentException("Postnummer kan have kun have 4 cifre");
+            }
+            if (kunde.TelefonNummer.ToString().Length != 8)
+            {
+                throw new ArgumentException("Telefon Nummer skal være gyldigt");
             }
             foreach (Kunde kunde1 in KundeList)
             {
@@ -160,7 +164,7 @@ namespace FuncLayer
         }
         private void ValidateBilInfo(Bilmodel bilmodel)
         {
-            if (bilmodel.Model is "")
+            if (bilmodel.Model == "")
             {
                 throw new ArgumentException("Model skal udfyldes");
             }
@@ -172,9 +176,9 @@ namespace FuncLayer
             {
                 throw new ArgumentException("Startår kan ikke være støre end Slutår");
             }
-            foreach(Bilmodel bilmodel1 in BilmodelList)
+            foreach (Bilmodel bilmodel1 in BilmodelList)
             {
-                if(bilmodel.Mærke == bilmodel1.Mærke && bilmodel.Model == bilmodel1.Model && bilmodel.Startår >= bilmodel1.Startår && bilmodel.Slutår <= bilmodel1.Slutår && bilmodel.Startår <= bilmodel1.Slutår)
+                if (bilmodel.Mærke == bilmodel1.Mærke && bilmodel.Model == bilmodel1.Model && bilmodel.Startår >= bilmodel1.Startår && bilmodel.Slutår <= bilmodel1.Slutår && bilmodel.Startår <= bilmodel1.Slutår)
                 {
                     throw new ArgumentException("Der en bil af samme Mærke, Model og Årstal findes allerede");
                 }
@@ -202,10 +206,10 @@ namespace FuncLayer
             {
                 throw new ArgumentException("Betingelser skal udfyldes");
             }
-            if (forsikring.ForsikringPeriode == null)
-            {
-                throw new ArgumentNullException("Skal vælge en star dato");
-            }
+            //if (forsikring.ForsikringPeriode == null)
+            //{
+            //    throw new ArgumentNullException("Skal vælge en star dato");
+            //}
             foreach (ForsikringAftaler forsikring1 in ForsikringList)
             {
                 if (forsikring.Registreringsnummer == forsikring1.Registreringsnummer)
